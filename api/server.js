@@ -1,4 +1,5 @@
 // See https://github.com/typicode/json-server#module
+const cors = require("cors");
 const jsonServer = require("json-server");
 
 const server = jsonServer.create();
@@ -18,6 +19,7 @@ const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 // Add this before server.use(router)
+server.use(cors());
 server.use(
   jsonServer.rewriter({
     "/api/*": "/$1",
